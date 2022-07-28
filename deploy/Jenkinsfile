@@ -9,5 +9,27 @@ pipeline {
 				}
 			}
 		}
-	}
-}
+
+		stage('Test') {
+			steps {
+				script {
+					 sh 'echo "testing stage"'
+				}
+			}
+		}
+		stage('Deploy') {
+			steps {
+				script {
+					 sh 'echo "deploying stage"'
+				}
+			}
+		}
+		stage('Cleanup') {
+			steps {
+				script {
+					 sh 'echo "clean up stage"'
+				}
+			}
+		}
+
+		
