@@ -27,6 +27,8 @@
 
 - name: Create directory 
   hosts: web servers, db, nfs, lb
-  file:
-   path: /home/file
-   state: directory
+  tasks:
+   - name: create directory
+     file:
+      path: /home/file
+      state: directory
