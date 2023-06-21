@@ -24,3 +24,9 @@
       apt:
         name: wireshark
         state: latest
+
+- name: Create directory 
+  hosts: web servers, db, nfs, lb
+  file:
+   path: /home/file
+   state: directory
