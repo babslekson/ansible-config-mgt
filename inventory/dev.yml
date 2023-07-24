@@ -1,4 +1,5 @@
 [nfs]
+<<<<<<< HEAD
 172.31.87.126 ansible_ssh_user='ec2-user'
 
 [webservers]
@@ -10,3 +11,6 @@
 
 [lb]
 172.31.82.0 ansible_ssh_user='ubuntu'
+
+
+>>>>>>> 7e8f598da7772b80150ae0057ced0bfacd6ab89c

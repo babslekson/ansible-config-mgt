@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 - name: update web, db and nfs servers
+=======
+- name: update web, nfs and db servers
+>>>>>>> 7e8f598da7772b80150ae0057ced0bfacd6ab89c
   hosts: webservers, nfs, db
   remote_user: ec2-user
   become: yes
@@ -23,6 +27,7 @@
     - name: ensure wireshark is at the latest version
       apt:
         name: wireshark
+<<<<<<< HEAD
         state: latest
 
 - name: Create directory 
@@ -35,3 +40,6 @@
      file:
       path: /home/file
       state: directory
+=======
+        state: latest
+>>>>>>> 7e8f598da7772b80150ae0057ced0bfacd6ab89c

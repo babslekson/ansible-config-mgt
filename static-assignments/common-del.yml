@@ -22,4 +22,8 @@
       state: absent
       autoremove: yes
       purge: yes
+<<<<<<< HEAD
       autoclean: yes
+=======
+      autoclean: yes
+>>>>>>> 7e8f598da7772b80150ae0057ced0bfacd6ab89c
