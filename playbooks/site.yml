@@ -1,13 +1,12 @@
 ---
-- hosts: all
-- name: Include dynamic variables
+- hosts: db
+- name: Installing reverse proxy
   tasks:
-  import_playbook: ../static-assignments/common.yml
-  include: ../dynamic-assignments/env-vars.yml
+  import_playbook: ../static-assignments/database.yml
   tags:
     - always
 
-- hosts: uat-webservers
-- name: Webserver assignment
-  import_playbook: ../static-assignments/uat-webservers.yml
+- hosts: nginx
+- name: nginx assignment
+  import_playbook: ../static-assignments/nginx.yml
 
