@@ -1,13 +1,11 @@
 ---
 - hosts: db
-  tasks:
-    - name: Installing database
-      import_playbook: ../static-assignments/database.yml
+- name: Installing database
+  import_playbook: ../static-assignments/database.yml
   tags:
     - always
 
 - hosts: nginx
-  tasks: 
-    - name: installing nginx (reverse proxy)
-      import_playbook: ../static-assignments/nginx.yml
+- name: installing nginx (reverse proxy)
+  import_playbook: ../static-assignments/nginx.yml
 
