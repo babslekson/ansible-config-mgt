@@ -1,6 +1,12 @@
  pipeline {
     agent any
 
+
+    parameters {
+      string(name: 'inventory', defaultValue: 'dev',  description: 'This is the inventory file for the environment to deploy configuration')
+    }
+
+
     environment {
       ANSIBLE_CONFIG="${WORKSPACE}/deploy/ansible.cfg"
     }
@@ -32,7 +38,7 @@
 
     stage ('Run ansible playbook') {
       steps {
-        ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/dev', playbook: 'playbooks/site.yml', vaultTmpPath: ''
+        ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/${inventory}', playbook: 'playbooks/site.yml', vaultTmpPath: ''
         }
     }
 
