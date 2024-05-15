@@ -8,7 +8,7 @@
 
 - name: ensure nginx is started and enabled
   become: true
-  yum:
+  service:
     name: nginx
     state: started
     enabled: yes
