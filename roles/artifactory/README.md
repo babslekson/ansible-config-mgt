@@ -1,38 +1,101 @@
-Role Name
-=========
+# [artifactory](#artifactory)
 
-A brief description of the role goes here.
+Install and configure artifactory on your system.
 
-Requirements
-------------
+|GitHub|GitLab|Quality|Downloads|Version|
+|------|------|-------|---------|-------|
+|[![github](https://github.com/robertdebock/ansible-role-artifactory/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-artifactory/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-artifactory/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-artifactory)|[![quality](https://img.shields.io/ansible/quality/29550)](https://galaxy.ansible.com/robertdebock/artifactory)|[![downloads](https://img.shields.io/ansible/role/d/29550)](https://galaxy.ansible.com/robertdebock/artifactory)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-artifactory.svg)](https://github.com/robertdebock/ansible-role-artifactory/releases/)|
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## [Example Playbook](#example-playbook)
 
-Role Variables
---------------
+This example is taken from [`molecule/default/converge.yml`](https://github.com/robertdebock/ansible-role-artifactory/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+```yaml
+---
+- name: Converge
+  hosts: all
+  become: yes
+  gather_facts: yes
 
-Dependencies
-------------
+  roles:
+    - role: robertdebock.artifactory
+```
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/robertdebock/ansible-role-artifactory/blob/master/molecule/default/prepare.yml):
 
-Example Playbook
-----------------
+```yaml
+---
+- name: Prepare
+  hosts: all
+  gather_facts: no
+  become: yes
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+  roles:
+    - role: robertdebock.bootstrap
+    - role: robertdebock.core_dependencies
+```
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
 
-License
--------
+## [Role Variables](#role-variables)
 
-BSD
+The default values for the variables are set in [`defaults/main.yml`](https://github.com/robertdebock/ansible-role-artifactory/blob/master/defaults/main.yml):
 
-Author Information
-------------------
+```yaml
+---
+# defaults file for artifactory
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+# The location where Artifactory should store data.
+artifactory_file_store_dir: /data
+
+# The type of installation of artifactory.
+# Choose from "oss", "jcr" or "cpp-ce".
+artifactory_flavour: oss
+```
+
+## [Requirements](#requirements)
+
+- pip packages listed in [requirements.txt](https://github.com/robertdebock/ansible-role-artifactory/blob/master/requirements.txt).
+
+## [State of used roles](#state-of-used-roles)
+
+The following roles are used to prepare a system. You can prepare your system in another way.
+
+| Requirement | GitHub | GitLab |
+|-------------|--------|--------|
+|[robertdebock.bootstrap](https://galaxy.ansible.com/robertdebock/bootstrap)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-bootstrap/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-bootstrap)|
+|[robertdebock.core_dependencies](https://galaxy.ansible.com/robertdebock/core_dependencies)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-core_dependencies/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-core_dependencies/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-core_dependencies/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-core_dependencies)|
+
+## [Context](#context)
+
+This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
+
+Here is an overview of related roles:
+![dependencies](https://raw.githubusercontent.com/robertdebock/ansible-role-artifactory/png/requirements.png "Dependencies")
+
+## [Compatibility](#compatibility)
+
+This role has been tested on these [container images](https://hub.docker.com/u/robertdebock):
+
+|container|tags|
+|---------|----|
+|[EL](https://hub.docker.com/repository/docker/robertdebock/enterpriselinux/general)|8|
+|[Ubuntu](https://hub.docker.com/repository/docker/robertdebock/ubuntu/general)|bionic|
+
+The minimum version of Ansible required is 2.12, tests have been done to:
+
+- The previous version.
+- The current version.
+- The development version.
+
+If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-artifactory/issues)
+
+## [License](#license)
+
+[Apache-2.0](https://github.com/robertdebock/ansible-role-artifactory/blob/master/LICENSE).
+
+## [Author Information](#author-information)
+
+[robertdebock](https://robertdebock.nl/)
+
+Please consider [sponsoring me](https://github.com/sponsors/robertdebock).
