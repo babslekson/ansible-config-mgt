@@ -1,9 +1,7 @@
 ---
-# handlers file for artifactory
-
-- name: Restart artifactory
-  ansible.builtin.service:
-    name: artifactory
+# handlers file for distribution
+- name: restart artifactory
+  become: yes
+  systemd:
+    name: "{{ artifactory_daemon }}"
     state: restarted
-  when:
-    - not ansible_check_mode
