@@ -1,6 +1,43 @@
 ---
 # tasks file for artifactory
 
+- name: Install PostgreSQL and related packages
+  become: yes
+  ansible.builtin.yum:
+    name:
+      - postgresql-server
+      - postgresql-contrib
+    state: present
+
+- name: Initialize PostgreSQL database
+  become: yes
+  ansible.builtin.command: /usr/bin/postgresql-setup --initdb
+
+- name: Download PostgreSQL JDBC driver
+  ansible.builtin.get_url:
+    url: "{{ postgres_driver_download_url }}"
+    dest: "{{ artifactory_home }}/etc/"
+
+- name: Start and enable PostgreSQL service
+  become: yes
+  ansible.builtin.systemd:
+    name: postgresql
+    state: started
+    enabled: yes
+
+- name: Create PostgreSQL database for Artifactory
+  become: yes
+  become_user: postgres
+  postgresql_db:
+    name: artifactory
+
+- name: Create PostgreSQL user for Artifactory
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    name: artifactory
+    password: your_secure_password
+
 - name: install java 11
   ansible.builtin.yum:
     name: java-11-openjdk-devel

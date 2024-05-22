@@ -31,13 +31,13 @@ artifactory_taskAffinity: any
 jfrog_home_directory: /opt/jfrog
 
 # Pick the Artifactory flavour to install, can be also cpp-ce/jcr/pro
-artifactory_flavour: pro
+artifactory_flavour: oss
 
 artifactory_extra_java_opts: -server -Xms512m -Xmx2g -Xss256k -XX:+UseG1GC
 artifactory_system_yaml_template: system.yaml.j2
-artifactory_tar_file_name: jfrog-artifactory-pro-{{ artifactory_version }}-linux.tar.gz
+artifactory_tar_file_name: jfrog-artifactory-oss-{{ artifactory_version }}-linux.tar.gz
 artifactory_home: "{{ jfrog_home_directory }}/artifactory"
-artifactory_tar: https://releases.jfrog.io/artifactory/artifactory-pro/org/artifactory/pro/jfrog-artifactory-pro/{{ artifactory_version }}/{{ artifactory_tar_file_name }}
+artifactory_tar: https://releases.jfrog.io/artifactory/artifactory-oss/org/artifactory/pro/jfrog-artifactory-oss/{{ artifactory_version }}/{{ artifactory_tar_file_name }}
 artifactory_untar_home: "{{ jfrog_home_directory }}/artifactory-{{ artifactory_flavour }}-{{ artifactory_version }}"
 
 # Timeout in seconds for URL request
@@ -69,7 +69,12 @@ artifactory_binarystore: |-
   <config version="2">
       <chain template="cluster-file-system"/>
   </config>
-
+# posgress database
+artifactory_db_type: postgresql
+artifactory_db_driver: "{{ postgres_driver_download_url | basename }}"
+artifactory_db_url: "jdbc:postgresql://localhost:5432/artifactory"
+artifactory_db_user: artifactory
+artifactory_db_password: your_secure_password
 # Provide systemyaml content below with 2-space indentation
 artifactory_systemyaml: |-
   configVersion: 1
