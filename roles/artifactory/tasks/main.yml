@@ -13,11 +13,6 @@
   become: yes
   ansible.builtin.command: /usr/bin/postgresql-setup --initdb
 
-- name: Download PostgreSQL JDBC driver
-  ansible.builtin.get_url:
-    url: "{{ postgres_driver_download_url }}"
-    dest: "{{ artifactory_home }}/etc/"
-
 - name: Start and enable PostgreSQL service
   become: yes
   ansible.builtin.systemd:
@@ -87,3 +82,8 @@
     name: artifactory
     state: started
     enabled: yes
+
+- name: Download PostgreSQL JDBC driver
+  ansible.builtin.get_url:
+    url: "{{ postgres_driver_download_url }}"
+    dest: "{{ artifactory_home }}/app/artifactory/tomcat/lib/"
