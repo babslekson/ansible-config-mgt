@@ -12,6 +12,9 @@
 - name: Initialize PostgreSQL database
   become: yes
   ansible.builtin.command: /usr/bin/postgresql-setup --initdb
+  when: pgsql_data_dir.stat.exists == False or pgsql_data_dir_empty.rc == 0
+  register: postgresql_init
+  ignore_errors: true
 
 - name: Start and enable PostgreSQL service
   become: yes
