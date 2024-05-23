@@ -1,14 +1,14 @@
 ---
-- hosts: db
-- name: Installing database
-  import_playbook: ../static-assignments/database.yml
-  tags:
-    - always
+# - hosts: db
+# - name: Installing database
+#   import_playbook: ../static-assignments/database.yml
+#   tags:
+#     - always
 
-- hosts: nginx
-- name: installing nginx (reverse proxy)
-  import_playbook: ../static-assignments/nginx.yml
+# - hosts: nginx
+# - name: installing nginx (reverse proxy)
+#   import_playbook: ../static-assignments/nginx.yml
 
-# - hosts: artifactory
-# - name: artifactory repository
-#   import_playbook: ../static-assignments/artifactory.yml
+- hosts: artifactory
+- name: artifactory repository
+  import_playbook: ../static-assignments/artifactory.yml
