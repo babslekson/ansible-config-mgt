@@ -20,6 +20,19 @@
     state: started
     enabled: yes
 
+
+- name: Install pip
+  ansible.builtin.yum:
+    name: pip
+    state: present
+    become: true
+
+- name: Make sure psycopg2 is installed - needed for ansible postgresql stuff
+  ansible.builtin.pip:
+    name: psycopg2
+    state: present
+    become: true
+
 - name: Create PostgreSQL database for Artifactory
   become: yes
   become_user: postgres
