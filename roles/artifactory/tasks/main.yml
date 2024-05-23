@@ -28,7 +28,7 @@
   ansible.builtin.yum:
     name: pip
     state: present
-    become: true
+    become: yes
 
 - name: Make sure psycopg2 is installed - needed for ansible postgresql stuff
   ansible.builtin.pip:
