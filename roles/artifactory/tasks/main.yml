@@ -34,7 +34,7 @@
   ansible.builtin.pip:
     name: psycopg2
     state: present
-    become: true
+ 
 
 - name: Create PostgreSQL database for Artifactory
   become: yes
