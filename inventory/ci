@@ -1,2 +1,2 @@
-[artifactory]
-172.31.57.100 ansible_ssh_user='ec2-user' 
+[postgres]
+172.31.61.40 ansible_ssh_user='ec2-user' 

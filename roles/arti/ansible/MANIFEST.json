@@ -1,0 +1,34 @@
+{
+ "collection_info": {
+  "namespace": "jfrog",
+  "name": "ansible",
+  "version": "1.0.4",
+  "authors": [
+   "Jeff Fry <jefff@jfrog.com>"
+  ],
+  "readme": "README.md",
+  "tags": [
+   "artifactory",
+   "xray",
+   "jfrog"
+  ],
+  "description": "This collection provides roles for installing Artifactory and Xray. Additionally, it provides optional SSL and Postgresql roles if these are needed for your deployment.",
+  "license": [
+   "GPL-2.0-or-later"
+  ],
+  "license_file": null,
+  "dependencies": {},
+  "repository": "https://github.com/jfrog/JFrog-Cloud-Installers/",
+  "documentation": "https://www.jfrog.com/confluence/display/JFROG/",
+  "homepage": "https://github.com/jfrog/JFrog-Cloud-Installers/",
+  "issues": "https://github.com/jfrog/JFrog-Cloud-Installers/issues"
+ },
+ "file_manifest_file": {
+  "name": "FILES.json",
+  "ftype": "file",
+  "chksum_type": "sha256",
+  "chksum_sha256": "77ca6d37c2337be982891cd2c9fce0cfeea90ddc16c8b98e4c3a1904ad1752a5",
+  "format": 1
+ },
+ "format": 1
+}
