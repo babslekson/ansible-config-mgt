@@ -26,6 +26,12 @@
     - 'en_US:en'
     - 'en_us.UTF-8'
 
+- name: Import PostgreSQL GPG key
+  rpm_key:
+    key: "https://download.postgresql.org/pub/repos/yum/keys/RPM-GPG-KEY-PGDG
+    state: present
+  become: yes
+
 - name: Install the repository RPM
   yum:
     name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
