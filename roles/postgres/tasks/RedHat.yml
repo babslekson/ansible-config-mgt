@@ -46,7 +46,5 @@
   yum:
     name:
       - postgresql{{ postgres_server_pkg_version }}-server
-      - postgresql{{ postgres_server_pkg_version }}-contrib
-      - postgresql{{ postgres_server_pkg_version }}-devel
     state: present
   become: yes
