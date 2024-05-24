@@ -26,7 +26,7 @@
 
 - name: Install pip
   ansible.builtin.yum:
-    name: pip
+    name: python3-pip
     state: present
 
 
