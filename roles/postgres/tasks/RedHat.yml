@@ -7,15 +7,6 @@
     ansible_distribution == 'Red Hat Enterprise Linux'
   become: yes
 
-- name: install python2 psycopg2
-  yum:
-    name:
-      - python-psycopg2
-      - sudo
-      - wget
-      - perl
-    state: present
-
 - name: install python3 psycopg2
   yum:
     name:
