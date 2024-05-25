@@ -28,7 +28,7 @@
 
 - name: Import PostgreSQL GPG key
   rpm_key:
-    key: "https://download.postgresql.org/pub/repos/yum/keys/RPM-GPG-KEY-PGDG"
+    key: "https://yum.postgresql.org/keys/PGDG-RPM-GPG-KEY-RHEL"
     state: present
   become: yes
 
@@ -47,3 +47,4 @@
     name: postgresql{{ postgres_server_pkg_version }}-server
     state: present
   become: yes
+  
