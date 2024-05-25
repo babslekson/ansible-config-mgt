@@ -30,11 +30,9 @@
     content: "export PATH=$PATH:/usr/pgsql-{{ postgres_server_version }}/bin"
   become: yes
 
-- name: initialize PostgreSQL database cluster
-  vars:
-    ansible_become: "{{ postgres_server_initdb_become }}"
-    ansible_become_user: "{{ postgres_server_user }}"
-  shell: "{{ postgres_server_cmd_initdb }}"
+- name: Initialize PostgreSQL database cluster
+  become: yes
+  command: /usr/pgsql-16/bin/postgresql-16-setup initdb
 
 - name: enable postgres service
   systemd:
