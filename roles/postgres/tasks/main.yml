@@ -31,28 +31,10 @@
   become: yes
 
 - name: initialize PostgreSQL database cluster
-  environment:
-    LC_ALL: "en_US.UTF-8"
   vars:
     ansible_become: "{{ postgres_server_initdb_become }}"
     ansible_become_user: "{{ postgres_server_user }}"
-  command: "{{ postgres_server_cmd_initdb }} {{ postgres_server_data_location }}"
-  args:
-    creates: "{{ postgres_server_data_location }}/PG_VERSION"
-
-- name: install postgres configuration
-  template:
-    src: "{{ item }}.j2"
-    dest: "{{ postgres_server_config_location }}/{{ item }}"
-    owner: postgres
-    group: postgres
-    mode: u=rw,go=r
-  vars:
-    ansible_become: "{{ postgres_server_initdb_become }}"
-    ansible_become_user: "{{ postgres_server_user }}"
-  loop:
-    - pg_hba.conf
-    - postgresql.conf
+  command: "{{ postgres_server_cmd_initdb }}"
 
 - name: enable postgres service
   systemd:
