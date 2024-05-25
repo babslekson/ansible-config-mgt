@@ -70,18 +70,6 @@
     group: "{{ artifactory_group }}"
   become: yes
 
-- name: configure master key
-  template:
-    src: master.key.j2
-    dest: "{{ artifactory_home }}/var/etc/security/master.key"
-  become: yes
-
-- name: configure join key
-  template:
-    src: join.key.j2
-    dest: "{{ artifactory_home }}/var/etc/security/join.key"
-  become: yes
-
 - name: ensure {{ artifactory_home }}/var/etc/info/ exists
   file:
     path: "{{ artifactory_home }}/var/etc/info/"
