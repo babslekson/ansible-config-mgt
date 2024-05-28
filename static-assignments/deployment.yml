@@ -2,6 +2,7 @@
 - name: Deploying the PHP Applicaion to Dev Enviroment
   become: true
   hosts: todo
+  remote_user: ec2-user
 
   tasks:
     - name: install remi and rhel repo
