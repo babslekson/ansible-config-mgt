@@ -23,7 +23,7 @@
     stage ('checkout SCM') {
       steps {
 
-        git branch: "feature/jenkinspipeline-stages" , url: "https://github.com/babslekson/ansible-config-mgt.git"
+        git branch: "pj14" , url: "https://github.com/babslekson/ansible-config-mgt.git"
 
       }
     }
